@@ -46,10 +46,10 @@
             />
           </td>
           <td>{{product.productName}}</td>
-          <td>{{product.productCode}}</td>
+          <td>{{product.productCode| lowercase | removespaces:'-'}}</td>
           <td>{{product.releaseDate | date}}</td>
           <td>{{product.price | currency:'USD': 'symbol':'1.2-2' }}</td>
-          <td>{{product.starRating | number}}</td>
+          <td><pm-star [rating]="product.starRating"></pm-star></td>
         </tr>
       </tbody>
     </table>

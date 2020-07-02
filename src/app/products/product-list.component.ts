@@ -71,4 +71,8 @@ export class ProductListComponent {
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
+
+  starClicked(event: string): void {
+    this.pageTitle = event;
+  }
 }

@@ -15,9 +15,7 @@ export class ProductListComponent implements OnInit {
   listFilter: string = '';
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {} 
-
-  
+  constructor(private productService: ProductService) {}
 
   toggleImage(): void {
     this.showImage = !this.showImage;
@@ -27,6 +25,6 @@ export class ProductListComponent implements OnInit {
     this.pageTitle = event;
   }
   ngOnInit(): void {
-  this.products = this.productService.getProducts();
+    this.products = this.productService.getProducts();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product-interface';
 import { ProductService } from './product.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'pm-prod',
@@ -14,6 +15,7 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = false;
   listFilter: string = '';
   products: Product[] = [];
+  errorValue:HttpErrorResponse;
 
   constructor(private productService: ProductService) {}
 
@@ -25,6 +27,10 @@ export class ProductListComponent implements OnInit {
     this.pageTitle = event;
   }
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+      this.productService.getProducts().subscribe(
+       (data)=> this.products = data,
+       (err) => this.errorValue = err,
+       ()=> console.log('Call Complete')
+     );
   }
 }
